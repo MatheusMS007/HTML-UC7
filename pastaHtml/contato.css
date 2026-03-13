@@ -1,0 +1,23 @@
+body{
+    background-image: url("https://images3.alphacoders.com/869/869197.jpg");
+    background-size: cover; /*faz a imagem cobrir a tela*/   
+    background-attachment: fixed; /*faz a imagem ficar fixa*/
+    font-family: medievalsharp, cursive;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+input, textarea{
+    width: 10%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+input:focus, textarea:focus{
+    border-color: #c9a227;
+    box-shadow: 0 0 5px rgba(201, 162, 39, 0.5);
+    outline: none;}

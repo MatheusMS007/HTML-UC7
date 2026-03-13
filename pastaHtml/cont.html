@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área do Visitante</title>
+    <link rel="stylesheet" href="contato.css">
+</head>
+
+<body>
+    <section id="area1">
+    <h1>Área do Visitante</h1>
+    <p>Para deixar uma sugestão ou tirar dúvidas, preencha o formulário abaixo:</p>
+        </section>
+
+
+    <section id="area2">
+    <form action="" method="post">
+        <label for="nome">* Nome:</label>
+        <input type="text" id="nome" placeholder="Digite seu nome" required 
+            maxlength="100"><br><br>
+        </section>
+
+        <section id="area3">
+            <label for="sexo">Sexo:</label>
+            <label for="masculino">Masculino</label>
+            <input type="radio" id="masculino" value="Masculino">
+            <label for="feminino">Feminino</label>
+            <input type="radio" id="feminino" value="Feminino">
+            <br><br>
+        </section>
+
+
+        <section id="area4">
+            <label for="email">* Email:</label>
+            <input type="email" id="email" placeholder="Digite seu e-mail" required><br><br>
+        </section>
+
+        <section id="area5">
+            <label for="telefone">* Telefone:</label>
+            <input type="tel" id="telefone" placeholder="Digite seu telefone" ><br><br>
+        </section>
+
+        <section id="area6">
+            <label for="messagem">Dúvida ou sugestão:</label><br>
+            <textarea id="messagem" placeholder="Digite sua dúvida ou sugestão aqui..." 
+            rows="10" cols="30"></textarea><br><br> <!--rows = linhas da caixa/ cols= largura da caixa -->
+        </section>
+
+        <p>* Campos obrigatórios</p>
+
+        <input type="submit" value="Enviar">
+        <input type="reset" value="Limpar">
+    </form>
+    
+</body>
+</html>
