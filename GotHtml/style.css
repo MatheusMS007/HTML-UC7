@@ -53,25 +53,3 @@ section#audio{
     right: 10px;
     inline-size: 280px;
 }
-
-
-
-/*estilos do formulário de contato*/
-
-section#area1{
-    background-color:rgba(red, green, blue, alpha);
-    padding: 5px;
-    border-radius: 5px;
-}
-
-section#area2{
-    background-color:rgba(red, green, blue, alpha);
-    padding: 5px;
-    border-radius: 10px;
-}
-
-section#area3{
-    background-color:rgba(red, green, blue, alpha);
-    padding: 5px;
-    border-radius: 10px;
-}

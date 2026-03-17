@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Área do Visitante</title>
-    <link rel="stylesheet" href="contato.css">
 </head>
 
 <body>
@@ -14,12 +13,12 @@
 
     <form action="got.html" method="post">
         <label for="nome">* Nome:</label>
-        <input type="text" id="nome" placeholder="Digite seu nome" required
+        <input type="text" id="nome" placeholder="Digite seu nome" required pattern="[azAZ]+"
             maxlength="100"><br><br>
 
         <label for="sexo">Sexo: </label>
-        <input type="radio" id="masc" name="sexo" value="Masculino">Masculino
-        <input type="radio" id="fem" name="sexo" value="Feminino">Feminino
+        <input type="radio" id="masc" value="Masculino">Masculino
+        <input type="radio" id="fem" value="Feminino">Feminino
         <br><br>
 
         <label for="email">* Email:</label>
@@ -28,8 +27,8 @@
         <label for="telefone">* Telefone:</label>
         <input type="tel" id="telefone" placeholder="(99)999999999"><br><br>
 
-        <label for="mensagem">Dúvida ou sugestão:</label><br>
-        <textarea id="mensagem" placeholder="Digite sua dúvida ou sugestão aqui..."
+        <label for="messagem">Dúvida ou sugestão:</label><br>
+        <textarea id="messagem" placeholder="Digite sua dúvida ou sugestão aqui..."
         rows="10" cols="30" required></textarea><br><br> <!--rows = linhas da caixa/ cols= largura da caixa -->
 
 
