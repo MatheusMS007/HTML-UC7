@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Site de instituição de ensino focado em tecnologia.">
     <meta http-equiv="refresh" content="30s">
     <meta name="author" content="Silva. Matheus">
+      <link rel="stylesheet" href="inTech.css">
     <title>Cursos inovaTech</title>
 
 </head>
 
 <body>
     
+    <!-- Cabeçalho da página com logo e título -->
     <header>
         <img src="inovaTech.png" alt="logo"
         width="200" height="200">
@@ -19,12 +21,15 @@
         <p>Centro de Capacitação Profissional</p>
     </header>
 
+    <!-- Navegação principal -->
     <nav>
         <a href="inicio.html">Início</a>
         <a href="secretaria.html">Secretaria</a>
         
     </nav>
 
+    <!-- Título e descrição geral dos cursos -->
+     <div id="descricao">
     <h1>Cursos</h1>
     <p>Os cursos oferecidos têm como objetivo preparar os alunos para atuar na área de tecnologia. <br>
         Entre eles estão Cybersecurity, que ensina a proteger sistemas e dados contra ataques digitais; <br>
@@ -32,10 +37,13 @@
         e Administração de Redes, que ensina a instalar, configurar e manter redes de computadores. <br>
         Esses cursos ajudam os alunos a desenvolver habilidades importantes para o mercado de trabalho na área de TI.
     </p>
+    </div>
 
+    <!-- Seção principal dos cursos -->
     <section id="cursos">
         <h2>Cursos Oferecidos</h2>
         <ul>
+            <!-- Div para o curso de Cybersecurity -->
             <div id="cursoCyber">
             <li>Cybersecurity</li>
             <img src="DefesaCiber.avif" alt="logoDefesaCiber"
@@ -46,6 +54,7 @@
                 preparando profissionais para manter sistemas e informações seguros na internet.</p>
             </div>
 
+            <!-- Div para o curso de Desenvolvimento Web -->
             <div id="cursoDesenv">
             <li>Desenvolvimento Web</li>
             <img src="AnaliseDesenv.jpg" alt="logoDesenv"
@@ -56,6 +65,7 @@
                 e usar linguagens para construir sistemas e sites funcionais.</p>
             </div>
 
+            <!-- Div para o curso de Administração de Redes -->
             <div id="cursoAdm">
             <li>Administração de Redes</li>
             <img src="AdmRedes.jpg" alt="logoAdm"
@@ -67,6 +77,7 @@
             </div>
         </ul>
 
+        <!-- Div para as matérias aprendidas -->
         <div id="materias">
             <h3>=>Oque você vai aprender:</h3>
             <table border="1">
@@ -93,6 +104,7 @@
 
     </section>
 
+     <!-- Rodapé da página -->
      <footer>
         <a href="#sobre">Sobre Nós</a>
         <p>2023 Escola Exemplo. Todos os direitos reservados.</p>
