@@ -42,7 +42,7 @@ body{
 }
 
 /*destaca a seção quando passa o mouse/ scale: indica o quanto vai crescer*/
-section:hover{/*seleciona as seções, manos a do áudio.*/
+section:hover{/*seleciona as seções, menos a do áudio.*/
     transform: scale(1.05);
 }
 

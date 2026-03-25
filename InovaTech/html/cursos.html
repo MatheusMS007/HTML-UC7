@@ -14,11 +14,14 @@
 <body>
     
     <!-- Cabeçalho da página com logo e título -->
-    <header>
-        <img src="inovaTech-Photoroom.png" alt="logo"
-        width="200" height="200">
-        <h1>Bem-vindo à Inova Tech</h1>
-        <p>Centro de Capacitação Profissional</p>
+   <header>
+        <div class="brand"> <!-- junta logo e texto -->
+            <img src="../midias/inovaTech-Photoroom.png" alt="logo">
+            <div class="brand-text">
+                <h1>Bem-vindo à Inova Tech</h1> <!-- separa o texto da imagem -->
+                <h3>Centro de Capacitação Profissional</h3>
+            </div>
+        </div>
     </header>
 
     <!-- Navegação principal -->
@@ -46,7 +49,7 @@
             <!-- Div para o curso de Cybersecurity -->
             <div id="cursoCyber">
             <li>Cybersecurity</li>
-            <img src="DefesaCiber.avif" alt="logoDefesaCiber"
+            <img src="../midias/DefesaCiber.avif" alt="logoDefesaCiber"
             width="200" height="200">
             <h3>Cybersecurity</h3>
             <p>O curso de Cybersecurity ensina a proteger sistemas, redes e dados contra ataques digitais. <br>
@@ -57,7 +60,7 @@
             <!-- Div para o curso de Desenvolvimento Web -->
             <div id="cursoDesenv">
             <li>Desenvolvimento Web</li>
-            <img src="AnaliseDesenv.jpg" alt="logoDesenv"
+            <img src="../midias/AnaliseDesenv.jpg" alt="logoDesenv"
             width="200" height="200">
             <h3>Desenvolvimento Web</h3>
             <p>O curso de Desenvolvimento Web ensina a criar sites e aplicações para a internet. <br>
@@ -68,7 +71,7 @@
             <!-- Div para o curso de Administração de Redes -->
             <div id="cursoAdm">
             <li>Administração de Redes</li>
-            <img src="AdmRedes.jpg" alt="logoAdm"
+            <img src="../midias/AdmRedes.jpg" alt="logoAdm"
             width="200" height="200">
             <h3>Administração de Redes</h3>
             <p>O curso de Administração de Redes ensina a instalar, configurar e manter redes de computadores. <br>
@@ -77,7 +80,7 @@
             </div>
         </ul>
 
-        <!-- Div para as matérias aprendidas -->
+        <!-- Div para as matérias oferecidas -->
         <div id="materias">
             <h3>=>Oque você vai aprender:</h3>
             <table border="1">
@@ -105,9 +108,15 @@
     </section>
 
      <!-- Rodapé da página -->
-     <footer>
-        <a href="#sobre">Sobre Nós</a>
-        <p>2023 Escola Exemplo. Todos os direitos reservados.</p>
+ <footer>
+        <P></P>
+        <h4>Redes Sociais</h4>
+    <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Facebook</a></li>
+        <li><a href="#">LinkedIn</a></li>
+    </ul>
+        <p>© 2026 InovaTech - Todos os direitos reservados</p>
     </footer>
     
 </body>
