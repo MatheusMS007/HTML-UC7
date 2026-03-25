@@ -1,3 +1,11 @@
+:root {
+    --azul-principal: rgb(61, 162, 245);
+    --azul-escuro: rgb(30, 120, 200);
+    --azul-claro: rgb(120, 190, 255);
+    --azul-hover: rgb(45, 140, 220);
+}
+
+
 body {
     margin: 0;
     padding-top: 90px;
