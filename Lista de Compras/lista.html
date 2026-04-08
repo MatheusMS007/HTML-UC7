@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Lista de Compras</title>
+<script src="lista.js"></script> <!-- liga o J.S ao html -->
+
+</head>
+
+
+<body>
+
+<div class="container">
+    <h1>Lista de Compras</h1>
+ 
+    <form id="addForm" class="add-form">
+<input id="itemInput" placeholder="Itens" required /><br><br>
+
+    <select id="categoriaInput" required>
+<option value="">Categoria</option>
+<option value="frutas">Frutas</option>   
+<option value="bebidas">Bebidas</option>
+<option value="mistura">Mistura</option>
+    </select><br><br>
+
+<button id="add">Adicionar</button><br><br>
+<button id="limpar" type="reset">Limpar Tudo</button>
+    </form>
+ 
+    <div id="categorias" class="list"></div>
+<h1>Frutas</h1><ul id="frutas"></ul>
+<h1>Bebidas</h1><ul id="bebidas"></ul>
+<h1>Mistura</h1><ul id="mistura"></ul>
+    </div>
+ 
+</body>
+
+</html>
