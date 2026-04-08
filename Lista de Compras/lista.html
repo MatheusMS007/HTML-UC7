@@ -1,39 +1,57 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Lista de Compras</title>
-<script src="lista.js"></script> <!-- liga o J.S ao html -->
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras</title>
+    <script src="lista.js"></script> <!-- Liga o JavaScript ao HTML -->
 </head>
 
-
 <body>
+    <header> 
+        <!-- Título principal da página -->
+        <h2 class="h2">Lista de Compras</h2>
+    </header>
+    <br><hr>
+    <!-- Orientação para o usuário -->
+    <h2><u> Adicione produtos a sua lista </u></h2>
+    <!-- Campo para digitar o nome do produto -->
+    <h2> Produto </h2>
+    <input type="text" id="produto" placeholder="Nome do produto">
+    <!-- Campo para selecionar a categoria do produto -->
+    <h2 class="h2"> Categoria </h2>
+    <select id="Categoria">
+        <option value=""></option>
+        <option value="Limpeza">Limpeza </option>
+        <option value="Frutas">Frutas </option>
+        <option value="Bebidas">Bebidas </option>
+    </select>
+    <!-- Botão para adicionar o produto -->
+    <button id="adicionar" onclick='adicionar()'> adicionar</button>
+    <br><br>
+    <hr>  
+    <!-- Título da seção de produtos adicionados -->
+    <h2> produtos adicionados </h2>
 
-<div class="container">
-    <h1>Lista de Compras</h1>
- 
-    <form id="addForm" class="add-form">
-<input id="itemInput" placeholder="Itens" required /><br><br>
+    <!-- Lista de produtos da categoria Limpeza -->
+    <ul id="Limpeza"> <h3 class="h3">Limpeza</h3>
+    </ul>
 
-    <select id="categoriaInput" required>
-<option value="">Categoria</option>
-<option value="frutas">Frutas</option>   
-<option value="bebidas">Bebidas</option>
-<option value="mistura">Mistura</option>
-    </select><br><br>
+    <!-- Lista de produtos da categoria Frutas -->
+    <ul id="Frutas"> <h3 class="h3">Frutas</h3>
+    </ul>
 
-<button id="add">Adicionar</button><br><br>
-<button id="limpar" type="reset">Limpar Tudo</button>
-    </form>
+    <!-- Lista de produtos da categoria Bebidas -->
+    <ul id="Bebidas"> <h3 class="h3">Bebidas</h3>
+    </ul>
  
-    <div id="categorias" class="list"></div>
-<h1>Frutas</h1><ul id="frutas"></ul>
-<h1>Bebidas</h1><ul id="bebidas"></ul>
-<h1>Mistura</h1><ul id="mistura"></ul>
-    </div>
- 
+    <br><br>
+    <hr>
+    <!-- Título da lista de produtos concluídos -->
+    <h2 class="h2">Lista completa</h2>
+    <!-- Lista de produtos concluídos -->
+    <ul id="concluidos">
+    </ul>
+   
 </body>
-
 </html>
