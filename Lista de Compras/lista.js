@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
         
         const li = document.createElement('li'); // Cria um novo item de lista
-        li.textContent = produto;
+        li.textContent = produto; 
 
         // Quando clicar no item, ele vai para a lista de concluídos
         li.addEventListener('click', function() {
