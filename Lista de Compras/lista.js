@@ -1,5 +1,4 @@
-// Espera o HTML carregar antes de rodar o JS
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function() { // Espera o HTML carregar antes de rodar o JS
     
     const inputProduto = document.getElementById('produto'); // Seleciona o campo de texto onde o usuário digita o produto
     const selectCategoria = document.getElementById('Categoria'); // Seleciona o campo de categoria
@@ -20,15 +19,15 @@ window.addEventListener('DOMContentLoaded', function() {
             return;// Não faz nada se não preencher tudo
         }
 
-        
-        const li = document.createElement('li'); // Cria um novo item de lista
-        li.textContent = produto; 
+        const btnConcluir = document.createElement('button'); // cria um botão para concluir
+        btnConcluir.textContent = 'concluir';
 
         // Quando clicar no item, ele vai para a lista de concluídos
         li.addEventListener('click', function() {
             li.parentNode.removeChild(li); // Remove da lista atual
             listaConcluidos.appendChild(li); // Adiciona na lista de concluídos
         });
+
 
         // Adiciona na lista da categoria correta
         if (categoria === 'Limpeza') {
