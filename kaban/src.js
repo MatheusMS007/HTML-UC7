@@ -19,7 +19,10 @@ form.addEventListener('submit', function(event) {
     card.innerHTML = `<div class="titulo">${titulo}</div>
         <div class="descricao">${descricao}</div>
         <div class="prioridade">Prioridade: ${prioridade.charAt(0).toUpperCase() + prioridade.slice(1)}</div>
-        <button class="next">→</button>`;
+        <div class="buttons">
+            <button class="next">→</button>
+            <button class="prev">←</button>
+        </div>`;
     // Botão para mover para Doing
     card.querySelector('.next').addEventListener('click', function() {
         doing.appendChild(card);
@@ -30,6 +33,18 @@ form.addEventListener('submit', function(event) {
             this.remove(); // Remove o botão ao chegar em Done
         };
     });
+
+    card.querySelector('.prev').addEventListener('click', function() {
+        done.appendChild(card);
+        this.textContent = '←'; // mantém o botão
+            // Troca o evento para mover para Doing
+        this.onclick = function(){
+            doing.appendChild(card)
+            this.remove(); // Remove o botão ao chegar em Done
+        }
+    });
+
+
     // Adiciona o card em To Do
     todo.appendChild(card);
     form.reset();
