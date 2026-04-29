@@ -1,39 +1,29 @@
-document.getElementById('botao').addEventListener('click', cadastrar)
+// conteúdo da página carregado
+window.onload = function() {
+    // Procura pelo formulário na página pelo id 'form-cadastro'
+    var form = document.getElementById('form-cadastro');
+    // Procura pela área onde as mensagens serão exibidas (opcional)
+    var mensagem = document.getElementById('mensagem');
 
-const tabela = document.getElementById('tabela').getElementsByTagName('tbody')[0]
-
-function cadastrar(evento){
-    evento.preventDefault()
-    const nome = document.getElementById('nome').value
-    const email = document.getElementById('email').value
-    const senha = document.getElementById('senha').value
-
-    const linha = tabela.insertRow() // <tr></tr>
-    // const celula = linha.insertCell()
-    linha.innerHTML = `
-        <td> ${nome} </td>
-        <td> ${email} </td>
-        <td> ${senha} </td>
-        <button id='excluir' onclick=excluir(this)> Excluir </button>
-        <button id='editar' onclick=editar(this)> Editar </button>  
-    `
-}
-
-function excluir(elemento){
-    elemento.parentElement.remove()
-}
-
-function editar(elemento){
-    const linha = elemento.parentElement
-    const celulas = linha.querySelectorAll('td')
-    // celulas.forEach(cel => {
-    //     cel.innerText
-    // })
-    document.getElementById('nome').value = celulas[0].innerText
-}
-
-document.getElementById('tel').addEventListener('keydown', (evento) => {
-    if(evento.key === 'enter'){
-        cadastrar()
+    // Se o formulário existir na página
+    if (form) {
+        // Quando o formulário for enviado
+        form.onsubmit = function(event) {
+            // Impede que a página recarregue ao enviar
+            event.preventDefault();
+            // Pega os valores dos campos do formulário
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;  
+                // mostra mensagem de sucesso
+                if (mensagem) {
+                    mensagem.innerText = 'Cadastro realizado com sucesso!';
+                    mensagem.style.color = 'green';
+                } else {
+                    alert('Cadastro realizado com sucesso!');
+                }
+                // para salvar os dados
+                form.reset(); // Limpa o formulário
+            }
+        }
     }
-})
