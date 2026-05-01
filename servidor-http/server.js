@@ -1,7 +1,6 @@
 import http from 'http'
 import fs from 'fs'
 import queryString from 'querystring'
-import { URLSearchParams } from 'url'
 
 const PORTA = 3000
 const HOST = 'localhost'
@@ -15,10 +14,10 @@ const server = http.createServer((req, res) => {
         // res.write()
         res.end('<h1> Página Inicial </h1>')
     }else if(req.url === '/cadastro' && req.method === 'GET'){
-         res.writeHead(200, {"content-type": 'text/html; charset=utf-8'})   
+        res.writeHead(200, {"content-type": 'text/html; charset=utf-8'})   
         res.end(fs.readFileSync('cadastro.html', 'utf-8'))
-    } else if(req.url === '/cursos' && req.method === 'POST'){
-        res.writeHead(200, {"content-type": 'text/html; charset=utf-8'})     
+    } else if(req.url === '/curso' && req.method === 'POST'){
+        res.writeHead(200, {"content-type": 'application/json; charset=utf-8'})     
         let dados = ''
         req.on('data', chunk => {
             dados += chunk.toString()
@@ -26,7 +25,7 @@ const server = http.createServer((req, res) => {
         req.on('end', () => {
             const dados_req = queryString.parse(dados) // curs=DS&ch=1200&tipo=tecnico = (curso: DS, ch: 1200,  tipo: tecnico)
             const dados_req1 = new URLSearchParams(dados) // converter os dados para um objeto mais fácil de manipular
-            cursos.push(dados_req) // armazena os dados do array CURSOS
+            cursos.push(dados_req1) // armazena os dados do array CURSOS
 
             //res.write('<h1> Cursos </h1>')          
             //res.end(`
@@ -34,22 +33,22 @@ const server = http.createServer((req, res) => {
             //    Carga Horária: ${dados_req.ch} <br>
             //    Tipo: ${dados_req.tipo} </h3>`) // resposta em HTML
 
+            //resposta em JSON
             res.end(JSON.stringify({
-                curso: dados_req1.get('curso'), // pega o valor do campo CURSO
+                curso: dados_req1.get('curso'), 
                 ch: dados_req1.get('ch'),
                 tipo: dados_req1.get('tipo') 
-            }))
-
+            }))// pega o valor do campo CURSO
         })
     }
     else if(req.url === '/cursos' && req.method === 'GET'){
-        res.writeHead(200, {"content-type": 'text/html; chartset=utf-8'})
+        res.writeHead(200, {"content-type": 'text/html; charset=utf-8'})
         res.end(`
             <h1> Lista de Cursos </h1>
             <h3> ${cursos.map(curso => `
-                <br> Curso: ${curso.curso} <br>
-                Carga Horária: ${curso.ch} <br>
-                Tipo: ${curso.tipo} <br> `)}
+                <br> Curso: ${curso.get('curso')} <br>
+                Carga Horária: ${curso.get('ch')} <br>
+                Tipo: ${curso.get('tipo')} <br> `)}
                 </h3>`)
     }
     else{
