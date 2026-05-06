@@ -14,7 +14,7 @@ const server = http.createServer((req, res) => {
         // res.write()
         res.end('<h1> Página Inicial </h1>')
     }else if(req.url === '/cadastro' && req.method === 'GET'){
-        res.writeHead(200, {"content-type": 'text/html; charset=utf-8'})   
+         res.writeHead(200, {"content-type": 'text/html; charset=utf-8'})   
         res.end(fs.readFileSync('cadastro.html', 'utf-8'))
     } else if(req.url === '/curso' && req.method === 'POST'){
         res.writeHead(200, {"content-type": 'application/json; charset=utf-8'})     
