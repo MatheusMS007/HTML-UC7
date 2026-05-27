@@ -1,23 +1,28 @@
-import { Sequelize } from 'sequelize' // importa o Sequelize, que é a ferramenta que conecta o sistema ao banco de dados
+import { Sequelize } from 'sequelize'
+import { fileURLToPath } from 'url'
+import path from 'path'
 
-const sequelize = new Sequelize({  // cria a conexão com o banco de dados
-    dialect: 'sqlite',             // diz que o tipo do banco de dados é SQLite
-    storage: './src/database/salao.db' // diz onde o arquivo do banco de dados vai ser salvo
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+
+const sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: path.join(__dirname, '..', 'database', 'salao.db') // caminho absoluto para o banco de dados
 })
 
 // Função que testa se a conexão com o banco de dados funcionou
 const conexaoBD = async () => {
     try {
-        await sequelize.authenticate()                            // tenta conectar
-        console.log('Banco de dados conectado com sucesso!')     // se funcionou, mostra no terminal
+        await sequelize.authenticate()
+        console.log('Banco de dados conectado com sucesso!')
     } catch (error) {
-        console.error('Erro ao conectar no banco de dados:', error) // se deu erro, mostra o erro
+        console.error('Erro ao conectar no banco de dados:', error)
     }
 }
 
 conexaoBD() // chama a função acima para testar a conexão quando o sistema iniciar
 
-// Função que cria as tabelas no banco de dados com base nos modelos que vamos criar depois
+
+// Função que cria as tabelas no banco de dados com base nos modelos
 export const sincronizarBD = async () => {
     try {
         await sequelize.sync({ force: false }) // force: false significa que NÃO apaga os dados já salvos

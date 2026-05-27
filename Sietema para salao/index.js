@@ -1,23 +1,27 @@
-import express from 'express'                               // importa o express, que é o framework que cria o servidor
-import path from 'path'                                     // importa o path, que ajuda a encontrar pastas e arquivos
-import morgan from 'morgan'                                 // importa o morgan, que mostra no terminal as requisições feitas
-import dotenv from 'dotenv'                                 // importa o dotenv, que lê as configurações do arquivo .env
-import { sincronizarBD } from './src/config/orm.js'        // importa a função que cria as tabelas no banco de dados
-import routerCliente from './src/routers/routerCliente.js'         // importa as rotas de clientes
-import routerAgendamento from './src/routers/routerAgendamento.js' // importa as rotas de agendamentos
+import express from 'express'                             
+import path from 'path'                                     
+import morgan from 'morgan'
+import methodOverride from 'method-override'                                 
+import dotenv from 'dotenv'                                
+import { sincronizarBD } from './src/config/orm.js'
+import './src/models/modelCliente.js'     // carrega o model para criar a tabela clientes
+import './src/models/modelAgendamento.js' // carrega o model para criar a tabela agendamentos
+import routerCliente from './src/routers/routerCliente.js'        
+import routerAgendamento from './src/routers/routerAgendamento.js' 
 
-dotenv.config() // lê o arquivo .env para pegar as configurações
+dotenv.config() // lê o arquivo .env 
 
-sincronizarBD() // cria as tabelas no banco de dados quando o sistema iniciar
+sincronizarBD() // cria as tabelas no banco de dados
 
 const app = express() // cria o servidor
 
 const PORT = process.env.PORT || 3000   // porta onde o sistema vai rodar (padrão 3000)
 const HOST = process.env.HOST || 'localhost' // endereço do servidor (padrão localhost)
 
-app.use(express.json())                            // permite que o servidor entenda dados em JSON
-app.use(express.urlencoded({ extended: true }))    // permite que o servidor entenda dados de formulários HTML
-app.use(morgan('common'))                          // mostra no terminal cada requisição feita ao servidor
+app.use(express.json())                         // permite que o servidor entenda dados em JSON
+app.use(express.urlencoded({ extended: true })) // permite que o servidor entenda dados de formulários HTML
+app.use(morgan('common'))
+app.use(methodOverride('_method'))                       // mostra no terminal cada requisição feita ao servidor
 
 app.use(express.static(path.join(import.meta.dirname, 'src', 'public'))) // diz onde ficam os arquivos HTML, CSS e JS
 

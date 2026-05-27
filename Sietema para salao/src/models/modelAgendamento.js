@@ -11,28 +11,23 @@ const Agendamentos = sequelize.define('Agendamento', { // 'Agendamento' é o nom
         autoIncrement: true,      // cresce sozinho a cada agendamento (1, 2, 3...)
         allowNull: false          // não pode ficar vazio
     },
-
     servico: {
         type: DataTypes.STRING,   // tipo texto
-        allowNull: false          // não pode ficar vazio, serviço é obrigatório
+        allowNull: false          
     },
-
     data: {
         type: DataTypes.STRING,   // tipo texto para guardar a data (ex: 2025-06-01)
-        allowNull: false          // não pode ficar vazio, data é obrigatória
+        allowNull: false          
     },
-
     hora: {
         type: DataTypes.STRING,   // tipo texto para guardar a hora (ex: 14:30)
-        allowNull: false          // não pode ficar vazio, hora é obrigatória
+        allowNull: false          
     },
-
     status: {
         type: DataTypes.STRING,   // tipo texto
         allowNull: false,         // não pode ficar vazio
         defaultValue: 'pendente'  // quando criar um agendamento, o status começa como 'pendente'
     }
-
 },
 {
     tableName: 'agendamentos', // nome da tabela no banco de dados
@@ -41,8 +36,7 @@ const Agendamentos = sequelize.define('Agendamento', { // 'Agendamento' é o nom
 })
 
 // Liga a tabela de agendamentos com a tabela de clientes
-// Um cliente pode ter vários agendamentos
 Clientes.hasMany(Agendamentos, { foreignKey: 'idCliente' })       // um cliente tem muitos agendamentos
 Agendamentos.belongsTo(Clientes, { foreignKey: 'idCliente' })     // um agendamento pertence a um cliente
 
-export default Agendamentos // exporta o model para usar em outros arquivos
+export default Agendamentos

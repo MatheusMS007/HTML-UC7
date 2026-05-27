@@ -10,22 +10,18 @@ const Clientes = sequelize.define('Cliente', { // 'Cliente' é o nome do modelo
         autoIncrement: true,      // o número cresce sozinho a cada cliente cadastrado (1, 2, 3...)
         allowNull: false          // não pode ficar vazio
     },
-
     nome: {
         type: DataTypes.STRING,   // tipo texto
-        allowNull: false          // não pode ficar vazio, nome é obrigatório
+        allowNull: false          
     },
-
     telefone: {
         type: DataTypes.STRING,   // tipo texto (para aceitar traços e parênteses)
-        allowNull: false          // não pode ficar vazio, telefone é obrigatório
+        allowNull: false          
     },
-
     email: {
         type: DataTypes.STRING,   // tipo texto
         allowNull: true           // pode ficar vazio, email é opcional
     }
-
 },
 {
     tableName: 'clientes', // nome da tabela no banco de dados

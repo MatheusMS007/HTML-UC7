@@ -1,10 +1,10 @@
-import sequelize from './orm.js' // importa a conexão que criamos no orm.js
+import { Sequelize, QueryTypes } from 'sequelize'
+import sequelize from './orm.js'
 
-// Função que executa qualquer comando no banco de dados
-const execute = async (sql, params) => { // sql = o comando, params = os valores do comando
-    const options = {}                   // cria um objeto vazio de opções
-    if (params) options.replacements = params // se tiver valores, adiciona nas opções
-    return await sequelize.query(sql, options) // executa o comando no banco e retorna o resultado
+const execute = async (sql, params) => {
+    const options = { type: QueryTypes.SELECT }
+    if (params) options.replacements = params
+    return await sequelize.query(sql, options)
 }
 
-export default { execute } // exporta a função para poder usar em outros arquivos
+export default { execute }

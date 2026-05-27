@@ -1,25 +1,28 @@
-// =============================================
-// FUNÇÕES GERAIS
-// =============================================
 
 // Alterna entre a aba de Clientes e Agendamentos
 function mostrarAba(aba) {
-  document.getElementById("aba-clientes").style.display = aba === "clientes" ? "block" : "none";
+  document.getElementById("aba-clientes").style.display = aba === "clientes" ? "block" : "none"; // a ? 
   document.getElementById("aba-agendamentos").style.display = aba === "agendamentos" ? "block" : "none";
   if (aba === "agendamentos") carregarAgendamentos();
 }
 
-// =============================================
-// CLIENTES
-// =============================================
+
+// a ? equivale ao if
+
+// if (aba === "clientes") {
+//   return "block";
+// } else {
+//   return "none";
+// }
+
 
 // Carrega e mostra todos os clientes na tabela
 async function carregarClientes() {
-  const resposta = await fetch("/clientes");       // pede a lista ao servidor
-  const clientes = await resposta.json();          // converte para lista
+  const resposta = await fetch("/clientes");// pede a lista ao servidor
+  const clientes = await resposta.json();// converte para lista
 
   const tbody = document.querySelector("#tabelaClientes tbody");
-  tbody.innerHTML = "";                            // limpa a tabela antes de preencher
+  tbody.innerHTML = ""; // limpa a tabela antes de preencher
 
   clientes.forEach(cliente => {
     tbody.innerHTML += `
@@ -82,9 +85,6 @@ async function apagarCliente(id) {
   carregarClientes();
 }
 
-// =============================================
-// AGENDAMENTOS
-// =============================================
 
 // Carrega e mostra todos os agendamentos na tabela
 async function carregarAgendamentos() {
@@ -98,6 +98,8 @@ async function carregarAgendamentos() {
   tbody.innerHTML = "";
 
   agendamentos.forEach(ag => {
+
+    
     // Formata a data para o padrão brasileiro (dd/mm/aaaa)
     const dataFormatada = ag.data.split("-").reverse().join("/");
 
@@ -183,7 +185,4 @@ async function apagarAgendamento(id) {
   carregarAgendamentos();
 }
 
-// =============================================
-// INICIALIZAÇÃO - roda quando a página abre
-// =============================================
 carregarClientes();

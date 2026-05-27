@@ -1,3 +1,4 @@
+import path from 'path'
 import bdConexao from '../config/database.js' // importa a conexão com o banco de dados
 
 // CADASTRAR um novo cliente
@@ -13,16 +14,16 @@ export const criarCliente = async (req, res) => {
         await bdConexao.execute(sql, [nome, telefone, email]) // executa o comando com os dados
         res.redirect('/clientes')                             // redireciona para a lista de clientes
     } catch (err) {
-        res.status(500).json({ erro: err.message }) // se der erro, mostra a mensagem
+        res.status(500).json({ erro: err.message })
     }
 }
 
 // LISTAR todos os clientes
 export const listarClientes = async (req, res) => {
-    const sql = 'SELECT * FROM clientes ORDER BY nome' // comando para buscar todos os clientes em ordem alfabética
+    const sql = 'SELECT * FROM clientes ORDER BY nome'
     try {
-        const [clientes] = await bdConexao.execute(sql) // executa e guarda o resultado
-        res.render('clientes', { clientes })            // mostra a página com a lista de clientes
+        const clientes = await bdConexao.execute(sql)
+        res.render('clientes', { clientes })
     } catch (err) {
         res.status(500).json({ erro: err.message })
     }
@@ -46,7 +47,7 @@ export const atualizarCliente = async (req, res) => {
 export const removerCliente = async (req, res) => {
     const id = req.params.id // pega o id do cliente que está na URL
 
-    const sql = 'DELETE FROM clientes WHERE idCliente = ?' // comando para apagar
+    const sql = 'DELETE FROM clientes WHERE idCliente = ?'
     try {
         await bdConexao.execute(sql, [id]) // executa o comando
         res.redirect('/clientes')          // volta para a lista
@@ -57,5 +58,17 @@ export const removerCliente = async (req, res) => {
 
 // MOSTRAR a página de cadastro de clientes
 export const cadastroCliente = (req, res) => {
-    res.sendFile(path.resolve('./src/public/html/cadastro.html')) // abre a página HTML de cadastro
+    res.render('cadastroCliente') // abre a página de cadastro
+}
+
+// MOSTRAR a página de editar cliente
+export const editarCliente = async (req, res) => {
+    const id = req.params.id
+    const sql = 'SELECT * FROM clientes WHERE idCliente = ?'
+    try {
+        const rows = await bdConexao.execute(sql, [id])
+        res.render('editarCliente', { cliente: rows[0] })
+    } catch (err) {
+        res.status(500).json({ erro: err.message })
+    }
 }
