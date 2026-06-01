@@ -61,7 +61,7 @@
 
                         <!-- botão para apagar o agendamento -->
                         <form action="/agendamentos/<%= agendamento.idAgendamento %>?_method=DELETE" method="POST" style="display:inline">
-                            <button type="submit" class="btn-apagar" onclick="return confirm('Tem certeza?')">Apagar</button>
+                            <button type="submit" class="btn-apagar" data-id="<%= agendamento.idAgendamento %>">Apagar</button>
                         </form>
                     </td>
                 </tr>
@@ -70,5 +70,15 @@
         </table>
     </main>
 
+<script>
+  // Escuta o clique em todos os botões de apagar
+  document.querySelectorAll('.btn-apagar').forEach(function(botao) {
+    botao.closest('form').addEventListener('submit', function(e) {
+      if (!confirm('Tem certeza que deseja apagar este agendamento?')) {
+        e.preventDefault(); // cancela o envio se o usuário clicar em "Cancelar"
+      }
+    });
+  });
+</script>
 </body>
 </html>

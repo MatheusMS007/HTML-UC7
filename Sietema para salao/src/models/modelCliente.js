@@ -6,26 +6,22 @@ const Clientes = sequelize.define('Cliente', { // 'Cliente' é o nome do modelo
 
     idCliente: {
         type: DataTypes.INTEGER,  // tipo número inteiro
-        primaryKey: true,         // é a chave principal da tabela (identificador único)
-        autoIncrement: true,      // o número cresce sozinho a cada cliente cadastrado (1, 2, 3...)
+        primaryKey: true,         // é a chave principal
+        autoIncrement: true,      // atualiza automatico
         allowNull: false          // não pode ficar vazio
     },
-
     nome: {
         type: DataTypes.STRING,   // tipo texto
-        allowNull: false          // não pode ficar vazio, nome é obrigatório
+        allowNull: false          // não pode ficar vazio
     },
-
     telefone: {
-        type: DataTypes.STRING,   // tipo texto (para aceitar traços e parênteses)
-        allowNull: false          // não pode ficar vazio, telefone é obrigatório
+        type: DataTypes.STRING,   // tipo texto
+        allowNull: false          // não pode ficar vazio
     },
-
     email: {
         type: DataTypes.STRING,   // tipo texto
         allowNull: true           // pode ficar vazio, email é opcional
     }
-
 },
 {
     tableName: 'clientes', // nome da tabela no banco de dados
@@ -33,4 +29,4 @@ const Clientes = sequelize.define('Cliente', { // 'Cliente' é o nome do modelo
     charset: 'utf8'        // aceita acentos e caracteres especiais
 })
 
-export default Clientes // exporta o model para usar em outros arquivos
+export default Clientes 

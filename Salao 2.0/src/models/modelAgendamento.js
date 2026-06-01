@@ -7,42 +7,37 @@ const Agendamentos = sequelize.define('Agendamento', { // 'Agendamento' é o nom
 
     idAgendamento: {
         type: DataTypes.INTEGER,  // tipo número inteiro
-        primaryKey: true,         // identificador único do agendamento
-        autoIncrement: true,      // cresce sozinho a cada agendamento (1, 2, 3...)
+        primaryKey: true,         // é a chave primária
+        autoIncrement: true,      // atualiza automatico 
         allowNull: false          // não pode ficar vazio
     },
-
     servico: {
         type: DataTypes.STRING,   // tipo texto
-        allowNull: false          // não pode ficar vazio, serviço é obrigatório
+        allowNull: false          // não pode ficar vazio
     },
-
     data: {
-        type: DataTypes.STRING,   // tipo texto para guardar a data (ex: 2025-06-01)
-        allowNull: false          // não pode ficar vazio, data é obrigatória
+        type: DataTypes.STRING,   // tipo texto para guardar a data
+        allowNull: false          // não pode ficar vazio
     },
-
     hora: {
-        type: DataTypes.STRING,   // tipo texto para guardar a hora (ex: 14:30)
-        allowNull: false          // não pode ficar vazio, hora é obrigatória
+        type: DataTypes.STRING,   // tipo texto para guardar a hora
+        allowNull: false          // não pode ficar vazio
     },
-
     status: {
         type: DataTypes.STRING,   // tipo texto
         allowNull: false,         // não pode ficar vazio
         defaultValue: 'pendente'  // quando criar um agendamento, o status começa como 'pendente'
     }
-
 },
 {
     tableName: 'agendamentos', // nome da tabela no banco de dados
     timestamps: false,         // não cria colunas de data automáticas
-    charset: 'utf8'            // aceita acentos e caracteres especiais
+    charset: 'utf8'            // aceita acentos 
 })
 
 // Liga a tabela de agendamentos com a tabela de clientes
 // Um cliente pode ter vários agendamentos
-Clientes.hasMany(Agendamentos, { foreignKey: 'idCliente' })       // um cliente tem muitos agendamentos
-Agendamentos.belongsTo(Clientes, { foreignKey: 'idCliente' })     // um agendamento pertence a um cliente
+Clientes.hasMany(Agendamentos, { foreignKey: 'idCliente' })   // um cliente tem muitos agendamentos
+Agendamentos.belongsTo(Clientes, { foreignKey: 'idCliente' }) // um agendamento pertence a um cliente
 
-export default Agendamentos // exporta o model para usar em outros arquivos
+export default Agendamentos // exporta o model

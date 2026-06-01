@@ -1,6 +1,4 @@
-// =============================================
-// FUNÇÕES GERAIS
-// =============================================
+
 
 // Alterna entre a aba de Clientes e Agendamentos
 function mostrarAba(aba) {
@@ -8,10 +6,6 @@ function mostrarAba(aba) {
   document.getElementById("aba-agendamentos").style.display = aba === "agendamentos" ? "block" : "none";
   if (aba === "agendamentos") carregarAgendamentos();
 }
-
-// =============================================
-// CLIENTES
-// =============================================
 
 // Carrega e mostra todos os clientes na tabela
 async function carregarClientes() {

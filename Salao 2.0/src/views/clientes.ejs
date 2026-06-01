@@ -45,7 +45,7 @@
 
                         <!-- formulário para apagar o cliente -->
                         <form action="/clientes/<%= cliente.idCliente %>?_method=DELETE" method="POST" style="display:inline">
-                            <button type="submit" class="btn-apagar" onclick="return confirm('Tem certeza?')">Apagar</button>
+                            <button type="submit" class="btn-apagar" data-id="<%= cliente.idCliente %>">Apagar</button>
                         </form>
                     </td>
                 </tr>
@@ -54,5 +54,15 @@
         </table>
     </main>
 
+<script>
+  // Escuta o clique em todos os botões de apagar
+  document.querySelectorAll('.btn-apagar').forEach(function(botao) {
+    botao.closest('form').addEventListener('submit', function(e) {
+      if (!confirm('Tem certeza que deseja apagar este cliente?')) {
+        e.preventDefault(); // cancela o envio se o usuário clicar em "Cancelar"
+      }
+    });
+  });
+</script>
 </body>
 </html>
