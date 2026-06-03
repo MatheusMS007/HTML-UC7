@@ -1,10 +1,13 @@
-import express from 'express'                               // importa o express, que é o framework que cria o servidor
-import path from 'path'                                     // importa o path, que ajuda a encontrar pastas e arquivos
-import morgan from 'morgan'                                 // importa o morgan, que mostra no terminal as requisições feitas
-import dotenv from 'dotenv'                                 // importa o dotenv, que lê as configurações do arquivo .env
-import { sincronizarBD } from './src/config/orm.js'        // importa a função que cria as tabelas no banco de dados
-import routerCliente from './src/routers/routerCliente.js'         // importa as rotas de clientes
-import routerAgendamento from './src/routers/routerAgendamento.js' // importa as rotas de agendamentos
+import express from 'express'
+import path from 'path'
+import morgan from 'morgan'
+import dotenv from 'dotenv'
+import methodOverride from 'method-override'
+import { sincronizarBD } from './src/config/orm.js'
+import './src/models/modelCliente.js'      // registra o model de clientes no sequelize
+import './src/models/modelAgendamento.js'  // registra o model de agendamentos no sequelize
+import routerCliente from './src/routers/routerCliente.js'
+import routerAgendamento from './src/routers/routerAgendamento.js'
 
 dotenv.config() // lê o arquivo .env para pegar as configurações
 
@@ -15,9 +18,10 @@ const app = express() // cria o servidor
 const PORT = process.env.PORT || 3000   // porta onde o sistema vai rodar (padrão 3000)
 const HOST = process.env.HOST || 'localhost' // endereço do servidor (padrão localhost)
 
-app.use(express.json())                            // permite que o servidor entenda dados em JSON
-app.use(express.urlencoded({ extended: true }))    // permite que o servidor entenda dados de formulários HTML
-app.use(morgan('common'))                          // mostra no terminal cada requisição feita ao servidor
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(methodOverride('_method'))                         // lê o ?_method= nos formulários e converte para PUT ou DELETE
+app.use(morgan('common'))
 
 app.use(express.static(path.join(import.meta.dirname, 'src', 'public'))) // diz onde ficam os arquivos HTML, CSS e JS
 

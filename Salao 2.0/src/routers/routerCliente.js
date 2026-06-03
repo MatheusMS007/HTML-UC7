@@ -1,11 +1,13 @@
-import express from 'express' // importa o express
-import { criarCliente, listarClientes, atualizarCliente, removerCliente } from '../controllers/controllersCliente.js' // importa as funções do controller
+import express from 'express'
+import { criarCliente, listarClientes, atualizarCliente, removerCliente, exibirCadastroCliente, exibirEdicaoCliente } from '../controllers/controllersCliente.js'
 
-const routerCliente = express.Router() // cria o roteador de clientes
+const routerCliente = express.Router()
 
-routerCliente.get('/clientes', listarClientes)          // quando acessar /clientes, lista todos os clientes
-routerCliente.post('/clientes', criarCliente)           // quando enviar um formulário, cadastra o cliente
-routerCliente.put('/clientes/:id', atualizarCliente)    // quando editar, atualiza o cliente pelo id
-routerCliente.delete('/clientes/:id', removerCliente)   // quando apagar, remove o cliente pelo id
+routerCliente.get('/clientes', listarClientes)                // lista todos os clientes
+routerCliente.get('/cadastroCliente', exibirCadastroCliente)  // abre a página de cadastro em branco
+routerCliente.get('/editarCliente/:id', exibirEdicaoCliente)  // abre a página de edição preenchida
+routerCliente.post('/clientes', criarCliente)                 // cadastra o cliente
+routerCliente.put('/clientes/:id', atualizarCliente)          // atualiza o cliente
+routerCliente.delete('/clientes/:id', removerCliente)         // apaga o cliente
 
-export default routerCliente // exporta o router para usar no index.js
+export default routerCliente

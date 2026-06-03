@@ -1,8 +1,8 @@
-import { Sequelize } from 'sequelize' // importa o Sequelize, que é a ferramenta que conecta o sistema ao banco de dados
+import { Sequelize } from 'sequelize'
 
 const sequelize = new Sequelize({  // cria a conexão com o banco de dados
-    dialect: 'sqlite',             // diz que o tipo do banco de dados é SQLite
-    storage: './src/database/salao.db' // diz onde o arquivo do banco de dados vai ser salvo
+    dialect: 'sqlite',
+    storage: './src/database/salao.db'
 })
 
 // Função que testa se a conexão com o banco de dados funcionou

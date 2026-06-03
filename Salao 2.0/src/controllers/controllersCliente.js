@@ -55,7 +55,22 @@ export const removerCliente = async (req, res) => {
     }
 }
 
-// MOSTRAR a página de cadastro de clientes
-export const cadastroCliente = (req, res) => {
-    res.sendFile(path.resolve('./src/public/html/cadastro.html')) // abre a página HTML de cadastro
+// MOSTRAR a página de cadastro de cliente (formulário em branco)
+export const exibirCadastroCliente = (req, res) => {
+    res.render('cadastroCliente') // abre a página de cadastro
 }
+
+// MOSTRAR a página de edição de cliente (formulário já preenchido)
+export const exibirEdicaoCliente = async (req, res) => {
+    const id = req.params.id // pega o id do cliente que está na URL
+
+    const sql = 'SELECT * FROM clientes WHERE idCliente = ?' // busca o cliente pelo id
+    try {
+        const [rows] = await bdConexao.execute(sql, [id])
+        const cliente = rows[0]                   // pega o primeiro resultado
+        res.render('editarCliente', { cliente })  // abre a página já preenchida com os dados
+    } catch (err) {
+        res.status(500).json({ erro: err.message })
+    }
+}
+
