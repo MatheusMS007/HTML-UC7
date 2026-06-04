@@ -1,12 +1,14 @@
-import express from 'express' // importa o express
-import { criarAgendamento, listarAgendamentos, atualizarAgendamento, marcarRealizado, removerAgendamento } from '../controllers/controllersAgendamento.js' // importa as funções do controller
+import express from 'express'
+import { criarAgendamento, listarAgendamentos, atualizarAgendamento, marcarRealizado, removerAgendamento, exibirCadastroAgendamento, exibirEdicaoAgendamento } from '../controllers/controllersAgendamento.js'
 
-const routerAgendamento = express.Router() // cria o roteador de agendamentos
+const routerAgendamento = express.Router()
 
-routerAgendamento.get('/agendamentos', listarAgendamentos)              // quando acessar /agendamentos, lista todos
-routerAgendamento.post('/agendamentos', criarAgendamento)               // quando enviar formulário, cria o agendamento
-routerAgendamento.put('/agendamentos/:id', atualizarAgendamento)        // quando editar, atualiza o agendamento pelo id
-routerAgendamento.patch('/agendamentos/:id/realizado', marcarRealizado) // quando clicar em realizado, muda o status
-routerAgendamento.delete('/agendamentos/:id', removerAgendamento)       // quando apagar, remove o agendamento pelo id
+routerAgendamento.get('/agendamentos', listarAgendamentos)                        // lista todos os agendamentos
+routerAgendamento.get('/cadastroAgendamento', exibirCadastroAgendamento)          // abre a página de cadastro em branco
+routerAgendamento.get('/editarAgendamento/:id', exibirEdicaoAgendamento)          // abre a página de edição preenchida
+routerAgendamento.post('/agendamentos', criarAgendamento)                         // cria o agendamento
+routerAgendamento.put('/agendamentos/:id', atualizarAgendamento)                  // atualiza o agendamento
+routerAgendamento.patch('/agendamentos/:id/realizado', marcarRealizado)           // marca como realizado
+routerAgendamento.delete('/agendamentos/:id', removerAgendamento)                 // apaga o agendamento
 
-export default routerAgendamento // exporta o router para usar no index.js
+export default routerAgendamento

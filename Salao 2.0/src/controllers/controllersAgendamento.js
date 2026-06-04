@@ -61,12 +61,39 @@ export const marcarRealizado = async (req, res) => {
 
 // APAGAR um agendamento
 export const removerAgendamento = async (req, res) => {
-    const id = req.params.id // pega o id do agendamento que está na URL
+    const id = req.params.id
 
-    const sql = 'DELETE FROM agendamentos WHERE idAgendamento = ?' // comando para apagar
+    const sql = 'DELETE FROM agendamentos WHERE idAgendamento = ?'
     try {
-        await bdConexao.execute(sql, [id]) // executa o comando
-        res.redirect('/agendamentos')      // volta para a lista
+        await bdConexao.execute(sql, [id])
+        res.redirect('/agendamentos')
+    } catch (err) {
+        res.status(500).json({ erro: err.message })
+    }
+}
+
+// MOSTRAR a página de cadastro de agendamento (formulário em branco)
+export const exibirCadastroAgendamento = async (req, res) => {
+    const sql = 'SELECT * FROM clientes ORDER BY nome'
+    try {
+        const [clientes] = await bdConexao.execute(sql)
+        res.render('cadastroAgendamento', { clientes })
+    } catch (err) {
+        res.status(500).json({ erro: err.message })
+    }
+}
+
+// MOSTRAR a página de edição de agendamento (formulário já preenchido)
+export const exibirEdicaoAgendamento = async (req, res) => {
+    const id = req.params.id
+
+    const sqlAgendamento = 'SELECT * FROM agendamentos WHERE idAgendamento = ?' // busca o agendamento pelo id
+    const sqlClientes = 'SELECT * FROM clientes ORDER BY nome'                  // busca todos os clientes para o select
+    try {
+        const [rows] = await bdConexao.execute(sqlAgendamento, [id])
+        const [clientes] = await bdConexao.execute(sqlClientes)
+        const agendamento = rows[0]                                             // pega o primeiro resultado
+        res.render('editarAgendamento', { agendamento, clientes })              // abre a página já preenchida
     } catch (err) {
         res.status(500).json({ erro: err.message })
     }
